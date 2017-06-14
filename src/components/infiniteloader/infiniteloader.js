@@ -46,13 +46,6 @@ class InfiniteLoader extends Component{
         loaderDefaultIcon: <LoadMore showLine> No Data</LoadMore>,
     }
 
-    static reset() {
-        this.setState({
-            loading: false,
-            finish: false
-        });
-    };
-
     constructor(props){
         super(props);
 
@@ -64,6 +57,7 @@ class InfiniteLoader extends Component{
         this.scrollHandle = this.scrollHandle.bind(this);
         this.resolveLoading = this.resolveLoading.bind(this);
         this.finish = this.finish.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
     finish(){
@@ -93,6 +87,14 @@ class InfiniteLoader extends Component{
 
             this.props.onLoadMore(this.resolveLoading, this.finish);
         }
+    }
+
+    
+    reset() {
+        this.setState({
+            loading: false,
+            finish: false
+        });
     }
 
     render(){
